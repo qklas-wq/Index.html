@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,78 +10,108 @@
 :root {
   --red:#C0392B; --red-dark:#96281B; --red-glow:#E74C3C;
   --gold:#F39C12; --gold-light:#F8C471;
+  --green:#27AE60; --blue:#2980B9;
   --bg:#0A0A0A; --surface:#111111; --surface2:#1A1A1A;
   --text:#F0EDE8; --muted:#888880; --border:#2A2A2A;
 }
 body { background:var(--bg); color:var(--text); font-family:'Barlow Condensed',sans-serif; min-height:100vh; display:flex; flex-direction:column; overflow:hidden; user-select:none; }
 
-header { display:flex; align-items:center; justify-content:space-between; padding:20px 40px 16px; border-bottom:1px solid var(–border); flex-shrink:0; }
-.brand { font-family:‘Bebas Neue’,sans-serif; font-size:28px; letter-spacing:4px; color:var(–red-glow); }
+header { display:flex; align-items:center; justify-content:space-between; padding:20px 40px 16px; border-bottom:1px solid var(--border); flex-shrink:0; }
+.brand { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:4px; color:var(--red-glow); }
+.header-btns { display:flex; gap:10px; align-items:center; }
 .round-indicator { display:flex; gap:10px; align-items:center; }
-.round-pip { width:14px; height:14px; border-radius:50%; border:2px solid var(–muted); background:transparent; transition:all 0.4s; }
-.round-pip.done { background:var(–muted); border-color:var(–muted); }
-.round-pip.active { background:var(–red-glow); border-color:var(–red-glow); box-shadow:0 0 8px var(–red-glow); }
-.round-label { font-size:16px; font-weight:600; letter-spacing:2px; color:var(–muted); text-transform:uppercase; margin-right:8px; }
-.gear-btn { background:transparent; border:1px solid var(–border); color:var(–muted); font-size:22px; width:44px; height:44px; border-radius:6px; cursor:pointer; display:flex; align-items:center; justify-content:center; margin-left:20px; transition:all 0.2s; }
-.gear-btn:active { background:var(–surface2); }
+.round-pip { width:14px; height:14px; border-radius:50%; border:2px solid var(--muted); background:transparent; transition:all 0.4s; }
+.round-pip.done { background:var(--muted); border-color:var(--muted); }
+.round-pip.active { background:var(--red-glow); border-color:var(--red-glow); box-shadow:0 0 8px var(--red-glow); }
+.round-label { font-size:16px; font-weight:600; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-right:8px; }
+.icon-btn { background:transparent; border:1px solid var(--border); color:var(--muted); font-size:18px; height:44px; padding:0 14px; border-radius:6px; cursor:pointer; display:flex; align-items:center; gap:6px; font-family:'Barlow Condensed',sans-serif; font-weight:700; letter-spacing:2px; transition:all 0.2s; white-space:nowrap; }
+.icon-btn:active { background:var(--surface2); }
 
 main { flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr auto; overflow:hidden; }
-
-.timer-panel { grid-column:1; grid-row:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:30px 40px; border-right:1px solid var(–border); position:relative; }
-.phase-tag { font-size:13px; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:var(–muted); margin-bottom:16px; transition:color 0.3s; position:relative; z-index:1; }
-.phase-tag.fight { color:var(–red-glow); }
-.phase-tag.rest { color:var(–gold); }
-.timer-display { font-family:‘Bebas Neue’,sans-serif; font-size:140px; line-height:1; letter-spacing:-2px; color:var(–text); transition:color 0.3s; min-width:320px; text-align:center; position:relative; z-index:1; }
-.timer-display.warning { color:var(–gold); }
-.timer-display.danger { color:var(–red-glow); }
+.timer-panel { grid-column:1; grid-row:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:30px 40px; border-right:1px solid var(--border); position:relative; }
+.phase-tag { font-size:13px; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:var(--muted); margin-bottom:16px; transition:color 0.3s; position:relative; z-index:1; }
+.phase-tag.fight { color:var(--red-glow); }
+.phase-tag.rest { color:var(--gold); }
+.timer-display { font-family:'Bebas Neue',sans-serif; font-size:140px; line-height:1; letter-spacing:-2px; color:var(--text); transition:color 0.3s; min-width:320px; text-align:center; position:relative; z-index:1; }
+.timer-display.warning { color:var(--gold); }
+.timer-display.danger { color:var(--red-glow); }
 .progress-ring { transform:rotate(-90deg); position:absolute; top:50%; left:50%; margin-top:-170px; margin-left:-170px; }
-.ring-bg { fill:none; stroke:var(–border); stroke-width:6; }
-.ring-fill { fill:none; stroke:var(–red-glow); stroke-width:6; stroke-linecap:round; transition:stroke-dashoffset 0.5s linear, stroke 0.3s; }
-.ring-fill.rest-ring { stroke:var(–gold); }
-.round-text { font-family:‘Bebas Neue’,sans-serif; font-size:22px; letter-spacing:3px; color:var(–muted); margin-top:12px; position:relative; z-index:1; }
-
+.ring-bg { fill:none; stroke:var(--border); stroke-width:6; }
+.ring-fill { fill:none; stroke:var(--red-glow); stroke-width:6; stroke-linecap:round; transition:stroke-dashoffset 0.5s linear, stroke 0.3s; }
+.ring-fill.rest-ring { stroke:var(--gold); }
+.round-text { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:3px; color:var(--muted); margin-top:12px; position:relative; z-index:1; }
 .combo-panel { grid-column:2; grid-row:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:30px 40px; overflow:hidden; }
-.combo-label { font-size:13px; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:var(–muted); margin-bottom:24px; }
-.combo-name { font-family:‘Bebas Neue’,sans-serif; font-size:52px; letter-spacing:2px; color:var(–red-glow); text-align:center; margin-bottom:20px; min-height:64px; }
-.combo-sequence { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:28px; min-height:60px; align-items:center; }
-.punch-badge { padding:8px 18px; border-radius:4px; font-size:22px; font-weight:700; letter-spacing:1px; border:2px solid; transition:all 0.2s; opacity:0.3; }
+.combo-label { font-size:13px; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:var(--muted); margin-bottom:24px; }
+.combo-name { font-family:'Bebas Neue',sans-serif; font-size:52px; letter-spacing:2px; color:var(--red-glow); text-align:center; margin-bottom:20px; min-height:64px; }
+.combo-sequence { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:20px; min-height:60px; align-items:center; }
+.punch-badge { padding:7px 14px; border-radius:4px; font-size:18px; font-weight:700; letter-spacing:1px; border:2px solid; transition:all 0.2s; opacity:0.3; }
 .punch-badge.active-punch { opacity:1; transform:scale(1.12); box-shadow:0 0 16px currentColor; }
-.punch-badge.straight { color:var(–red-glow); border-color:var(–red-glow); background:rgba(231,76,60,0.1); }
-.punch-badge.hook { color:var(–gold); border-color:var(–gold); background:rgba(243,156,18,0.1); }
-.punch-badge.body { color:#5DADE2; border-color:#5DADE2; background:rgba(93,173,226,0.1); }
-.movement-tip { font-size:18px; font-weight:600; letter-spacing:2px; color:var(–muted); text-align:center; min-height:28px; text-transform:uppercase; }
-.combo-countdown { font-family:‘Bebas Neue’,sans-serif; font-size:22px; color:var(–muted); letter-spacing:2px; margin-top:16px; min-height:30px; }
+.punch-badge.punch { color:var(--red-glow); border-color:var(--red-glow); background:rgba(231,76,60,0.1); }
+.punch-badge.block { color:var(--blue); border-color:var(--blue); background:rgba(41,128,185,0.1); }
+.punch-badge.movement { color:var(--green); border-color:var(--green); background:rgba(39,174,96,0.1); }
+.movement-tip { font-size:16px; font-weight:600; letter-spacing:2px; color:var(--muted); text-align:center; min-height:24px; text-transform:uppercase; }
+.combo-countdown { font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--muted); letter-spacing:2px; margin-top:12px; min-height:30px; }
+.bottom-bar { grid-column:1/-1; grid-row:2; display:flex; align-items:center; justify-content:center; gap:20px; padding:20px 40px; border-top:1px solid var(--border); flex-shrink:0; }
+.btn { font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:16px 48px; border-radius:4px; border:none; cursor:pointer; transition:all 0.15s; -webkit-tap-highlight-color:transparent; }
+.btn-primary { background:var(--red); color:#fff; min-width:220px; }
+.btn-primary:active { transform:scale(0.97); background:var(--red-dark); }
+.btn-secondary { background:transparent; color:var(--muted); border:1px solid var(--border); }
+.btn-secondary:active { background:var(--surface2); }
+.btn-green { background:var(--green); color:#fff; }
+.btn-green:active { transform:scale(0.97); opacity:0.85; }
 
-.bottom-bar { grid-column:1/-1; grid-row:2; display:flex; align-items:center; justify-content:center; gap:20px; padding:20px 40px; border-top:1px solid var(–border); flex-shrink:0; }
-.btn { font-family:‘Barlow Condensed’,sans-serif; font-size:20px; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:16px 48px; border-radius:4px; border:none; cursor:pointer; transition:all 0.15s; -webkit-tap-highlight-color:transparent; }
-.btn-primary { background:var(–red); color:#fff; min-width:220px; }
-.btn-primary:active { transform:scale(0.97); background:var(–red-dark); }
-.btn-secondary { background:transparent; color:var(–muted); border:1px solid var(–border); }
-.btn-secondary:active { background:var(–surface2); }
-
-.overlay { position:fixed; inset:0; background:var(–bg); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:10; gap:24px; padding:40px; }
+/* OVERLAYS */
+.overlay { position:fixed; inset:0; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:10; gap:24px; padding:40px; }
 .overlay.hidden { display:none; }
-.overlay-title { font-family:‘Bebas Neue’,sans-serif; font-size:100px; letter-spacing:6px; color:var(–red-glow); text-align:center; line-height:1; }
-.overlay-sub { font-size:22px; font-weight:600; letter-spacing:4px; color:var(–muted); text-transform:uppercase; text-align:center; }
+.overlay-title { font-family:'Bebas Neue',sans-serif; font-size:100px; letter-spacing:6px; color:var(--red-glow); text-align:center; line-height:1; }
+.overlay-sub { font-size:22px; font-weight:600; letter-spacing:4px; color:var(--muted); text-transform:uppercase; text-align:center; }
 .complete-stats { display:flex; gap:40px; margin:10px 0; }
-.stat-box { text-align:center; border:1px solid var(–border); padding:20px 32px; border-radius:6px; }
-.stat-num { font-family:‘Bebas Neue’,sans-serif; font-size:56px; color:var(–gold); }
-.stat-lbl { font-size:14px; letter-spacing:3px; color:var(–muted); text-transform:uppercase; }
+.stat-box { text-align:center; border:1px solid var(--border); padding:20px 32px; border-radius:6px; }
+.stat-num { font-family:'Bebas Neue',sans-serif; font-size:56px; color:var(--gold); }
+.stat-lbl { font-size:14px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; }
 
-.settings-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:20; display:flex; align-items:center; justify-content:center; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:20px; }
-.settings-overlay.hidden { display:none; }
-.settings-panel { background:var(–surface); border:1px solid var(–border); border-radius:12px; padding:28px 32px; width:640px; max-width:100%; display:flex; flex-direction:column; margin:auto; }
-.settings-title { font-family:‘Bebas Neue’,sans-serif; font-size:32px; letter-spacing:4px; color:var(–red-glow); margin-bottom:24px; }
+/* PANEL BASE */
+.panel-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:20; display:flex; align-items:center; justify-content:center; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:20px; }
+.panel-overlay.hidden { display:none; }
+.panel-box { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:28px 32px; width:680px; max-width:100%; display:flex; flex-direction:column; margin:auto; }
+.panel-title { font-family:'Bebas Neue',sans-serif; font-size:32px; letter-spacing:4px; color:var(--red-glow); margin-bottom:24px; }
+
+/* SETTINGS */
 .setting-row { display:flex; flex-direction:column; gap:6px; margin-bottom:18px; }
-.setting-label { font-size:13px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(–muted); }
-.setting-value { font-family:‘Bebas Neue’,sans-serif; font-size:24px; color:var(–text); }
-.setting-row input[type=range] { width:100%; accent-color:var(–red-glow); cursor:pointer; }
-.setting-row select { background:var(–surface2); color:var(–text); border:1px solid var(–border); border-radius:6px; padding:12px 16px; font-family:‘Barlow Condensed’,sans-serif; font-size:18px; font-weight:600; width:100%; cursor:pointer; appearance:none; }
-.settings-hint { font-size:14px; color:var(–muted); line-height:1.6; margin-top:-12px; margin-bottom:18px; }
-.settings-actions { display:flex; gap:16px; margin-top:4px; }
-.settings-actions .btn { flex:1; padding:14px; font-size:18px; }
-</style>
+.setting-label { font-size:13px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted); }
+.setting-value { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--text); }
+.setting-row input[type=range] { width:100%; accent-color:var(--red-glow); cursor:pointer; }
+.setting-row select { background:var(--surface2); color:var(--text); border:1px solid var(--border); border-radius:6px; padding:12px 16px; font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:600; width:100%; cursor:pointer; appearance:none; }
+.settings-hint { font-size:14px; color:var(--muted); line-height:1.6; margin-top:-12px; margin-bottom:18px; }
+.panel-actions { display:flex; gap:16px; margin-top:8px; }
+.panel-actions .btn { flex:1; padding:14px; font-size:18px; }
 
+/* COMBO BUILDER */
+.cb-name-row { display:flex; gap:10px; margin-bottom:20px; align-items:center; }
+.cb-name-input { background:var(--surface2); color:var(--text); border:1px solid var(--border); border-radius:6px; padding:12px 16px; font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:700; flex:1; letter-spacing:1px; }
+.cb-name-input::placeholder { color:var(--muted); }
+.cb-section-label { font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+.cb-move-grid { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+.cb-move-btn { padding:8px 14px; border-radius:4px; font-size:15px; font-weight:700; letter-spacing:1px; border:2px solid; cursor:pointer; background:transparent; font-family:'Barlow Condensed',sans-serif; transition:all 0.15s; -webkit-tap-highlight-color:transparent; }
+.cb-move-btn.punch { color:var(--red-glow); border-color:var(--red-glow); }
+.cb-move-btn.punch:active, .cb-move-btn.punch.selected { background:rgba(231,76,60,0.2); }
+.cb-move-btn.block { color:var(--blue); border-color:var(--blue); }
+.cb-move-btn.block:active, .cb-move-btn.block.selected { background:rgba(41,128,185,0.2); }
+.cb-move-btn.movement { color:var(--green); border-color:var(--green); }
+.cb-move-btn.movement:active, .cb-move-btn.movement.selected { background:rgba(39,174,96,0.2); }
+.cb-sequence { display:flex; flex-wrap:wrap; gap:8px; min-height:52px; padding:12px; background:var(--surface2); border-radius:6px; border:1px solid var(--border); margin-bottom:12px; align-items:center; }
+.cb-seq-badge { padding:6px 12px; border-radius:4px; font-size:15px; font-weight:700; border:2px solid; display:flex; align-items:center; gap:6px; }
+.cb-seq-badge .remove { cursor:pointer; color:var(--muted); font-size:16px; line-height:1; }
+.cb-seq-badge .remove:hover { color:var(--red-glow); }
+.cb-seq-empty { color:var(--muted); font-size:15px; letter-spacing:2px; }
+.cb-saved-list { display:flex; flex-direction:column; gap:8px; max-height:180px; overflow-y:auto; margin-bottom:16px; }
+.cb-saved-item { display:flex; align-items:center; justify-content:space-between; padding:10px 14px; background:var(--surface2); border-radius:6px; border:1px solid var(--border); }
+.cb-saved-name { font-size:18px; font-weight:700; letter-spacing:1px; color:var(--text); }
+.cb-saved-moves { font-size:13px; color:var(--muted); margin-top:2px; }
+.cb-saved-del { background:transparent; border:none; color:var(--muted); cursor:pointer; font-size:20px; padding:4px 8px; }
+.cb-saved-del:hover { color:var(--red-glow); }
+.cb-divider { border:none; border-top:1px solid var(--border); margin:16px 0; }
+</style>
 </head>
 <body>
 
@@ -90,8 +119,9 @@ main { flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1
   <div class="overlay-title">PEEK-A-BOO<br>TRAINER</div>
   <div class="overlay-sub">Cus D'Amato Method</div>
   <div id="idleConfig" style="font-size:18px; color:var(--muted); letter-spacing:2px; text-align:center; line-height:2.2;"></div>
-  <div style="display:flex; gap:16px; margin-top:8px;">
+  <div style="display:flex; gap:16px; margin-top:8px; flex-wrap:wrap; justify-content:center;">
     <button class="btn btn-secondary" onclick="openSettings()">⚙ SETTINGS</button>
+    <button class="btn btn-secondary" onclick="openBuilder()">+ COMBOS</button>
     <button class="btn btn-primary" onclick="startSession()">START TRAINING</button>
   </div>
 </div>
@@ -107,63 +137,99 @@ main { flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1
   <button class="btn btn-primary" onclick="resetSession()">GO AGAIN</button>
 </div>
 
-<div class="settings-overlay hidden" id="settingsOverlay">
-  <div class="settings-panel">
-    <div class="settings-title">Settings</div>
-
-```
-<div class="setting-row">
-  <div class="setting-label">Round Duration</div>
-  <div class="setting-value" id="roundDurLabel">1:00</div>
-  <input type="range" id="roundDurSlider" min="1" max="5" step="1" value="1" oninput="onRoundDurChange(this.value)">
-</div>
-
-<div class="setting-row">
-  <div class="setting-label">Number of Rounds</div>
-  <div class="setting-value" id="numRoundsLabel">3</div>
-  <input type="range" id="numRoundsSlider" min="1" max="12" step="1" value="3" oninput="onNumRoundsChange(this.value)">
-</div>
-
-<div class="setting-row">
-  <div class="setting-label">Rest Between Rounds</div>
-  <div class="setting-value" id="restDurLabel">1:00</div>
-  <input type="range" id="restDurSlider" min="1" max="3" step="1" value="1" oninput="onRestDurChange(this.value)">
-</div>
-
-<div class="setting-row">
-  <div class="setting-label">Combo Hold Time</div>
-  <div class="setting-value" id="comboDurLabel">6 sec</div>
-  <input type="range" id="comboDurSlider" min="6" max="60" step="6" value="6" oninput="onComboDurChange(this.value)">
-</div>
-
-<div class="setting-row">
-  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
-    <div class="setting-label" style="margin:0;">Voice</div>
-    <button class="btn btn-secondary" onclick="refreshVoices()" style="padding:6px 16px; font-size:14px; letter-spacing:1px;">&#8635; REFRESH</button>
+<!-- SETTINGS -->
+<div class="panel-overlay hidden" id="settingsOverlay">
+  <div class="panel-box">
+    <div class="panel-title">Settings</div>
+    <div class="setting-row">
+      <div class="setting-label">Round Duration</div>
+      <div class="setting-value" id="roundDurLabel">1:00</div>
+      <input type="range" id="roundDurSlider" min="1" max="5" step="1" value="1" oninput="onRoundDurChange(this.value)">
+    </div>
+    <div class="setting-row">
+      <div class="setting-label">Number of Rounds</div>
+      <div class="setting-value" id="numRoundsLabel">3</div>
+      <input type="range" id="numRoundsSlider" min="1" max="12" step="1" value="3" oninput="onNumRoundsChange(this.value)">
+    </div>
+    <div class="setting-row">
+      <div class="setting-label">Rest Between Rounds</div>
+      <div class="setting-value" id="restDurLabel">1:00</div>
+      <input type="range" id="restDurSlider" min="1" max="3" step="1" value="1" oninput="onRestDurChange(this.value)">
+    </div>
+    <div class="setting-row">
+      <div class="setting-label">Combo Hold Time</div>
+      <div class="setting-value" id="comboDurLabel">6 sec</div>
+      <input type="range" id="comboDurSlider" min="6" max="60" step="6" value="6" oninput="onComboDurChange(this.value)">
+    </div>
+    <div class="setting-row">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
+        <div class="setting-label" style="margin:0;">Voice</div>
+        <button class="btn btn-secondary" onclick="refreshVoices()" style="padding:6px 16px; font-size:14px; letter-spacing:1px;">&#8635; REFRESH</button>
+      </div>
+      <select id="voiceSelect"></select>
+      <div style="display:flex; gap:10px; margin-top:10px; align-items:center;">
+        <button class="btn btn-secondary" onclick="testVoice()" style="flex:1; padding:10px; font-size:15px; letter-spacing:1px;">&#9654; TEST VOICE</button>
+        <div id="voiceCount" style="font-size:14px; color:var(--muted); letter-spacing:1px; white-space:nowrap;"></div>
+      </div>
+    </div>
+    <div class="settings-hint">If a downloaded voice isn't showing, tap &#8635; REFRESH. Still missing? Force-quit Safari and reopen. Voices marked ✓ are local and work offline.</div>
+    <div class="panel-actions">
+      <button class="btn btn-secondary" onclick="closeSettings()">CANCEL</button>
+      <button class="btn btn-primary" onclick="saveSettings()">SAVE</button>
+    </div>
   </div>
-  <select id="voiceSelect"></select>
-  <div style="display:flex; gap:10px; margin-top:10px; align-items:center;">
-    <button class="btn btn-secondary" onclick="testVoice()" style="flex:1; padding:10px; font-size:15px; letter-spacing:1px;">&#9654; TEST VOICE</button>
-    <div id="voiceCount" style="font-size:14px; color:var(--muted); letter-spacing:1px; white-space:nowrap;"></div>
-  </div>
 </div>
-<div class="settings-hint">If Evan or any new voice isn't showing, tap <strong style="color:var(--text)">&#8635; REFRESH</strong>. Still missing? Force-quit Safari and reopen. Voices marked ✓ are local and work offline.</div>
 
-<div class="settings-actions">
-  <button class="btn btn-secondary" onclick="closeSettings()">CANCEL</button>
-  <button class="btn btn-primary" onclick="saveSettings()">SAVE</button>
-</div>
-```
+<!-- COMBO BUILDER -->
+<div class="panel-overlay hidden" id="builderOverlay">
+  <div class="panel-box" style="width:740px;">
+    <div class="panel-title">Combo Builder</div>
 
+    <!-- Saved combos -->
+    <div class="cb-section-label" id="savedLabel">Your Combos (0)</div>
+    <div class="cb-saved-list" id="savedList">
+      <div style="color:var(--muted); font-size:15px; letter-spacing:1px; padding:8px 0;">No custom combos yet. Build one below.</div>
+    </div>
+
+    <hr class="cb-divider">
+
+    <!-- Builder -->
+    <div class="cb-section-label">Build a Combo</div>
+    <div class="cb-name-row">
+      <input class="cb-name-input" id="cbNameInput" type="text" placeholder="Combo name..." maxlength="30">
+    </div>
+
+    <div class="cb-section-label" style="color:var(--red-glow);">Punches</div>
+    <div class="cb-move-grid" id="punchGrid"></div>
+
+    <div class="cb-section-label" style="color:var(--blue);">Blocks</div>
+    <div class="cb-move-grid" id="blockGrid"></div>
+
+    <div class="cb-section-label" style="color:var(--green);">Movement</div>
+    <div class="cb-move-grid" id="moveGrid"></div>
+
+    <div class="cb-section-label">Sequence <span style="color:var(--muted); font-size:11px;">(tap moves above to add · tap × to remove)</span></div>
+    <div class="cb-sequence" id="cbSequence">
+      <span class="cb-seq-empty">Tap moves above to build your combo...</span>
+    </div>
+
+    <div class="panel-actions">
+      <button class="btn btn-secondary" onclick="clearBuilder()">CLEAR</button>
+      <button class="btn btn-secondary" onclick="closeBuilder()">DONE</button>
+      <button class="btn btn-green" onclick="saveCombo()">SAVE COMBO</button>
+    </div>
   </div>
 </div>
 
 <header>
   <div class="brand">PEEK-A-BOO</div>
-  <div class="round-indicator">
-    <span class="round-label">Round</span>
-    <div id="pipsContainer" style="display:flex; gap:10px;"></div>
-    <button class="gear-btn" onclick="openSettings()">⚙</button>
+  <div class="header-btns">
+    <div class="round-indicator">
+      <span class="round-label">Round</span>
+      <div id="pipsContainer" style="display:flex; gap:10px;"></div>
+    </div>
+    <button class="icon-btn" onclick="openBuilder()">+ COMBOS</button>
+    <button class="icon-btn" onclick="openSettings()">⚙</button>
   </div>
 </header>
 
@@ -177,7 +243,6 @@ main { flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1
     <div class="timer-display" id="timerDisplay">1:00</div>
     <div class="round-text" id="roundText">ROUND 1 OF 3</div>
   </div>
-
   <div class="combo-panel">
     <div class="combo-label">Current Combo</div>
     <div class="combo-name" id="comboName">—</div>
@@ -185,174 +250,269 @@ main { flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1
     <div class="movement-tip" id="moveTip"></div>
     <div class="combo-countdown" id="comboCd"></div>
   </div>
-
   <div class="bottom-bar">
     <button class="btn btn-secondary" id="pauseBtn" onclick="togglePause()" style="display:none;">PAUSE</button>
-    <button class="btn btn-primary" id="mainBtn" onclick="togglePause()" style="display:none;">▶ RESUME</button>
+    <button class="btn btn-primary" id="mainBtn" onclick="togglePause()" style="display:none;">&#9654; RESUME</button>
     <button class="btn btn-secondary" onclick="resetSession()">RESET</button>
   </div>
 </main>
 
 <script>
-const COMBOS = [
-  { name:"Slip & Power", punches:[{label:"SLIP",type:"straight"},{label:"RIGHT CROSS",type:"straight"},{label:"LEFT HOOK",type:"hook"}], tip:"Straight → move 3x  ·  Hook → move 2x", voice:"Slip! Right cross! Left hook! Move, move, move!" },
-  { name:"Bob & Hook", punches:[{label:"BOB",type:"straight"},{label:"HOOK BODY",type:"hook"},{label:"HOOK HEAD",type:"hook"}], tip:"Hook → move 2x after each", voice:"Bob! Left hook body! Left hook head! Move, move!" },
-  { name:"The Classic", punches:[{label:"JAB",type:"straight"},{label:"CROSS",type:"straight"},{label:"LEFT HOOK",type:"hook"},{label:"CROSS",type:"straight"}], tip:"1-2-3-2  ·  Head moving between every shot", voice:"Jab! Cross! Left hook! Cross! Head movement!" },
-  { name:"Double Hook", punches:[{label:"HOOK BODY",type:"hook"},{label:"HOOK HEAD",type:"hook"}], tip:"Hook → move 2x  ·  Stay tight and compact", voice:"Left hook body! Left hook head! Move, move!" },
-  { name:"Uppercut Combo", punches:[{label:"SLIP",type:"straight"},{label:"RIGHT UPPER",type:"straight"},{label:"LEFT HOOK",type:"hook"}], tip:"Slip inside → explode up → hook over the top", voice:"Slip! Right uppercut! Left hook! Move, move!" },
-  { name:"Body Breaker", punches:[{label:"BODY",type:"body"},{label:"BODY",type:"body"},{label:"HEAD",type:"straight"}], tip:"Drop their guard  ·  Then take the head", voice:"Body! Body! Head! Move, move, move!" },
-  { name:"Close Range", punches:[{label:"RIGHT UPPER",type:"straight"},{label:"LEFT HOOK",type:"hook"},{label:"RIGHT HAND",type:"straight"}], tip:"All three in under a second  ·  Stay inside", voice:"Right uppercut! Left hook! Right hand! Move!" },
-  { name:"Tyson Special", punches:[{label:"SLIP",type:"straight"},{label:"HOOK BODY",type:"hook"},{label:"HOOK HEAD",type:"hook"}], tip:"Slip outside  ·  Body  ·  Come back to head", voice:"Slip! Left hook body! Left hook head! Move, move!" }
+const PUNCHES = ["Jab","Cross","Left Hook","Right Hook","Left Hook Body","Right Hook Body","Left Uppercut","Right Uppercut"];
+const BLOCKS  = ["Left High Block","Right High Block","Left Block","Right Block"];
+const MOVES   = ["Slip Left","Slip Right","Bob Left","Bob Right","Weave Left","Weave Right","Boxer Bounce"];
+
+const BUILT_IN_COMBOS = [
+  { name:"Slip & Power", custom:false, punches:[{label:"SLIP",type:"movement"},{label:"RIGHT CROSS",type:"punch"},{label:"LEFT HOOK",type:"punch"}], tip:"Straight → move 3x  ·  Hook → move 2x", voice:"Slip! Right cross! Left hook! Move, move, move!" },
+  { name:"Bob & Hook", custom:false, punches:[{label:"BOB",type:"movement"},{label:"HOOK BODY",type:"punch"},{label:"HOOK HEAD",type:"punch"}], tip:"Hook → move 2x after each", voice:"Bob! Left hook body! Left hook head! Move, move!" },
+  { name:"The Classic", custom:false, punches:[{label:"JAB",type:"punch"},{label:"CROSS",type:"punch"},{label:"LEFT HOOK",type:"punch"},{label:"CROSS",type:"punch"}], tip:"1-2-3-2  ·  Head moving between every shot", voice:"Jab! Cross! Left hook! Cross! Head movement!" },
+  { name:"Double Hook", custom:false, punches:[{label:"HOOK BODY",type:"punch"},{label:"HOOK HEAD",type:"punch"}], tip:"Hook → move 2x  ·  Stay tight and compact", voice:"Left hook body! Left hook head! Move, move!" },
+  { name:"Uppercut Combo", custom:false, punches:[{label:"SLIP",type:"movement"},{label:"RIGHT UPPER",type:"punch"},{label:"LEFT HOOK",type:"punch"}], tip:"Slip inside → explode up → hook over the top", voice:"Slip! Right uppercut! Left hook! Move, move!" },
+  { name:"Body Breaker", custom:false, punches:[{label:"BODY",type:"punch"},{label:"BODY",type:"punch"},{label:"HEAD",type:"punch"}], tip:"Drop their guard  ·  Then take the head", voice:"Body! Body! Head! Move, move, move!" },
+  { name:"Close Range", custom:false, punches:[{label:"RIGHT UPPER",type:"punch"},{label:"LEFT HOOK",type:"punch"},{label:"RIGHT HAND",type:"punch"}], tip:"All three in under a second  ·  Stay inside", voice:"Right uppercut! Left hook! Right hand! Move!" },
+  { name:"Tyson Special", custom:false, punches:[{label:"SLIP",type:"movement"},{label:"HOOK BODY",type:"punch"},{label:"HOOK HEAD",type:"punch"}], tip:"Slip outside  ·  Body  ·  Come back to head", voice:"Slip! Left hook body! Left hook head! Move, move!" }
 ];
 
+let customCombos = JSON.parse(localStorage.getItem('peekaboo_combos') || '[]');
+let builderSeq = [];
+
+function getAllCombos() { return [...BUILT_IN_COMBOS, ...customCombos]; }
+
+function saveCustomCombos() { localStorage.setItem('peekaboo_combos', JSON.stringify(customCombos)); }
+
+// ── BUILDER ──────────────────────────────────────────────
+function openBuilder() {
+  renderBuilderGrid();
+  renderSavedCombos();
+  document.getElementById('builderOverlay').classList.remove('hidden');
+}
+function closeBuilder() { document.getElementById('builderOverlay').classList.add('hidden'); }
+
+function typeClass(move) {
+  if (PUNCHES.includes(move)) return 'punch';
+  if (BLOCKS.includes(move)) return 'block';
+  return 'movement';
+}
+
+function renderBuilderGrid() {
+  function makeGrid(items, containerId) {
+    const el = document.getElementById(containerId);
+    el.innerHTML = '';
+    items.forEach(m => {
+      const btn = document.createElement('button');
+      const t = typeClass(m);
+      btn.className = 'cb-move-btn ' + t;
+      btn.textContent = m;
+      btn.onclick = () => addToSeq(m, t);
+      el.appendChild(btn);
+    });
+  }
+  makeGrid(PUNCHES, 'punchGrid');
+  makeGrid(BLOCKS, 'blockGrid');
+  makeGrid(MOVES, 'moveGrid');
+}
+
+function addToSeq(label, type) {
+  builderSeq.push({ label, type });
+  renderSeq();
+}
+
+function removeFromSeq(idx) {
+  builderSeq.splice(idx, 1);
+  renderSeq();
+}
+
+function renderSeq() {
+  const el = document.getElementById('cbSequence');
+  el.innerHTML = '';
+  if (!builderSeq.length) {
+    el.innerHTML = '<span class="cb-seq-empty">Tap moves above to build your combo...</span>';
+    return;
+  }
+  builderSeq.forEach((m, i) => {
+    const badge = document.createElement('div');
+    badge.className = 'cb-seq-badge ' + m.type;
+    const colors = { punch:'var(--red-glow)', block:'var(--blue)', movement:'var(--green)' };
+    badge.style.color = colors[m.type];
+    badge.style.borderColor = colors[m.type];
+    badge.style.background = m.type === 'punch' ? 'rgba(231,76,60,0.1)' : m.type === 'block' ? 'rgba(41,128,185,0.1)' : 'rgba(39,174,96,0.1)';
+    badge.innerHTML = m.label + ' <span class="remove" onclick="removeFromSeq(' + i + ')">&#215;</span>';
+    el.appendChild(badge);
+  });
+}
+
+function clearBuilder() {
+  builderSeq = [];
+  document.getElementById('cbNameInput').value = '';
+  renderSeq();
+}
+
+function saveCombo() {
+  const name = document.getElementById('cbNameInput').value.trim();
+  if (!name) { alert('Give your combo a name first.'); return; }
+  if (builderSeq.length < 2) { alert('Add at least 2 moves to the sequence.'); return; }
+  const voiceText = builderSeq.map(m => m.label).join('! ') + '! Go!';
+  const combo = {
+    name,
+    custom: true,
+    punches: builderSeq.map(m => ({ label: m.label.toUpperCase(), type: m.type })),
+    tip: 'Custom combo',
+    voice: voiceText
+  };
+  customCombos.push(combo);
+  saveCustomCombos();
+  clearBuilder();
+  renderSavedCombos();
+}
+
+function deleteCombo(idx) {
+  customCombos.splice(idx, 1);
+  saveCustomCombos();
+  renderSavedCombos();
+}
+
+function renderSavedCombos() {
+  const list = document.getElementById('savedList');
+  const label = document.getElementById('savedLabel');
+  label.textContent = 'Your Combos (' + customCombos.length + ')';
+  list.innerHTML = '';
+  if (!customCombos.length) {
+    list.innerHTML = '<div style="color:var(--muted); font-size:15px; letter-spacing:1px; padding:8px 0;">No custom combos yet. Build one below.</div>';
+    return;
+  }
+  customCombos.forEach((c, i) => {
+    const row = document.createElement('div');
+    row.className = 'cb-saved-item';
+    row.innerHTML = '<div><div class="cb-saved-name">' + c.name + '</div><div class="cb-saved-moves">' + c.punches.map(p => p.label).join(' → ') + '</div></div>' +
+      '<button class="cb-saved-del" onclick="deleteCombo(' + i + ')">&#215;</button>';
+    list.appendChild(row);
+  });
+}
+
+// ── SETTINGS ─────────────────────────────────────────────
 let cfg = { roundDur:60, numRounds:3, restDur:60, comboDur:6, voiceURI:'' };
 let currentRound=1, isResting=false, isPaused=true, timeLeft=60;
 let timerInterval=null, comboInterval=null, comboCount=0, lastComboIndex=-1;
 let punchInterval=null, cdInterval=null, cdLeft=0;
-
 const synth = window.speechSynthesis;
 let voices = [];
 
-function updateVoiceCount() {
-  const el = document.getElementById('voiceCount');
-  if (el) el.textContent = voices.length + ' voices found';
-}
+function updateVoiceCount() { const el=document.getElementById('voiceCount'); if(el) el.textContent=voices.length+' voices found'; }
 
 function refreshVoices() {
   voices = synth.getVoices();
   const sel = document.getElementById('voiceSelect');
   const prev = cfg.voiceURI || sel.value;
   sel.innerHTML = '';
-  if (!voices.length) {
-    const opt = document.createElement('option');
-    opt.textContent = 'No voices found — try force-quitting Safari';
-    sel.appendChild(opt);
-    updateVoiceCount();
-    return;
-  }
-  const sorted = [...voices].sort((a,b) => a.name.localeCompare(b.name));
+  if (!voices.length) { sel.innerHTML='<option>No voices found — try force-quitting Safari</option>'; updateVoiceCount(); return; }
+  const sorted = [...voices].sort((a,b)=>a.name.localeCompare(b.name));
   sorted.forEach(v => {
     const opt = document.createElement('option');
     opt.value = v.voiceURI;
-    const quality = v.name.toLowerCase().includes('premium') ? ' ★★' : v.name.toLowerCase().includes('enhanced') ? ' ★' : '';
-    opt.textContent = v.name + quality + (v.localService ? ' ✓' : '') + '  (' + v.lang + ')';
+    const q = v.name.toLowerCase().includes('premium') ? ' ★★' : v.name.toLowerCase().includes('enhanced') ? ' ★' : '';
+    opt.textContent = v.name + q + (v.localService ? ' ✓' : '') + '  (' + v.lang + ')';
     sel.appendChild(opt);
   });
   if (prev) sel.value = prev;
-  if (!sel.value) {
-    const preferred = voices.find(v => v.name.includes('Evan') || v.name.includes('Samantha') || v.name.includes('Daniel'));
-    if (preferred) sel.value = preferred.voiceURI;
-  }
+  if (!sel.value) { const p=voices.find(v=>v.name.includes('Evan')||v.name.includes('Samantha')||v.name.includes('Daniel')); if(p) sel.value=p.voiceURI; }
   updateVoiceCount();
 }
 
 function testVoice() {
-  const sel = document.getElementById('voiceSelect');
+  const uri = document.getElementById('voiceSelect').value;
   synth.cancel();
   const utt = new SpeechSynthesisUtterance("Jab! Cross! Left hook! Move, move, move!");
-  utt.rate = 1.08; utt.pitch = 1.0; utt.volume = 1.0;
-  const v = voices.find(v => v.voiceURI === sel.value);
-  if (v) utt.voice = v;
+  utt.rate=1.08; utt.pitch=1.0; utt.volume=1.0;
+  const v = voices.find(v=>v.voiceURI===uri); if(v) utt.voice=v;
   synth.speak(utt);
 }
 
-synth.onvoiceschanged = () => { voices = synth.getVoices(); refreshVoices(); };
-voices = synth.getVoices();
-if (voices.length) refreshVoices();
+synth.onvoiceschanged = () => { voices=synth.getVoices(); refreshVoices(); };
+voices = synth.getVoices(); if(voices.length) refreshVoices();
 
 function speak(text) {
   synth.cancel();
   const utt = new SpeechSynthesisUtterance(text);
-  utt.rate = 1.08; utt.pitch = 1.0; utt.volume = 1.0;
-  if (cfg.voiceURI) { const v = voices.find(v => v.voiceURI === cfg.voiceURI); if (v) utt.voice = v; }
+  utt.rate=1.08; utt.pitch=1.0; utt.volume=1.0;
+  if(cfg.voiceURI){ const v=voices.find(v=>v.voiceURI===cfg.voiceURI); if(v) utt.voice=v; }
   synth.speak(utt);
 }
 
-function onRoundDurChange(v) { document.getElementById('roundDurLabel').textContent = v + ':00'; }
-function onNumRoundsChange(v) { document.getElementById('numRoundsLabel').textContent = v; }
-function onRestDurChange(v) { document.getElementById('restDurLabel').textContent = v + ':00'; }
-function onComboDurChange(v) { document.getElementById('comboDurLabel').textContent = v + ' sec'; }
+function onRoundDurChange(v) { document.getElementById('roundDurLabel').textContent=v+':00'; }
+function onNumRoundsChange(v) { document.getElementById('numRoundsLabel').textContent=v; }
+function onRestDurChange(v) { document.getElementById('restDurLabel').textContent=v+':00'; }
+function onComboDurChange(v) { document.getElementById('comboDurLabel').textContent=v+' sec'; }
 
 function openSettings() {
   refreshVoices();
-  document.getElementById('roundDurSlider').value = cfg.roundDur/60;
-  document.getElementById('numRoundsSlider').value = cfg.numRounds;
-  document.getElementById('restDurSlider').value = cfg.restDur/60;
-  document.getElementById('comboDurSlider').value = cfg.comboDur;
-  onRoundDurChange(cfg.roundDur/60);
-  onNumRoundsChange(cfg.numRounds);
-  onRestDurChange(cfg.restDur/60);
-  onComboDurChange(cfg.comboDur);
-  if (cfg.voiceURI) document.getElementById('voiceSelect').value = cfg.voiceURI;
+  document.getElementById('roundDurSlider').value=cfg.roundDur/60;
+  document.getElementById('numRoundsSlider').value=cfg.numRounds;
+  document.getElementById('restDurSlider').value=cfg.restDur/60;
+  document.getElementById('comboDurSlider').value=cfg.comboDur;
+  onRoundDurChange(cfg.roundDur/60); onNumRoundsChange(cfg.numRounds);
+  onRestDurChange(cfg.restDur/60); onComboDurChange(cfg.comboDur);
+  if(cfg.voiceURI) document.getElementById('voiceSelect').value=cfg.voiceURI;
   document.getElementById('settingsOverlay').classList.remove('hidden');
 }
-
 function closeSettings() { document.getElementById('settingsOverlay').classList.add('hidden'); }
-
 function saveSettings() {
-  cfg.roundDur = parseInt(document.getElementById('roundDurSlider').value) * 60;
-  cfg.numRounds = parseInt(document.getElementById('numRoundsSlider').value);
-  cfg.restDur = parseInt(document.getElementById('restDurSlider').value) * 60;
-  cfg.comboDur = parseInt(document.getElementById('comboDurSlider').value);
-  cfg.voiceURI = document.getElementById('voiceSelect').value;
-  closeSettings();
-  resetSession();
+  cfg.roundDur=parseInt(document.getElementById('roundDurSlider').value)*60;
+  cfg.numRounds=parseInt(document.getElementById('numRoundsSlider').value);
+  cfg.restDur=parseInt(document.getElementById('restDurSlider').value)*60;
+  cfg.comboDur=parseInt(document.getElementById('comboDurSlider').value);
+  cfg.voiceURI=document.getElementById('voiceSelect').value;
+  closeSettings(); resetSession();
 }
 
-function formatTime(s) { return Math.floor(s/60) + ':' + String(s%60).padStart(2,'0'); }
+// ── TIMER & SESSION ───────────────────────────────────────
+function formatTime(s) { return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
 
 function buildPips() {
-  const c = document.getElementById('pipsContainer');
-  c.innerHTML = '';
-  for (let i=1; i<=cfg.numRounds; i++) {
-    const d = document.createElement('div');
-    d.className = 'round-pip'; d.id = 'pip'+i;
-    c.appendChild(d);
-  }
+  const c=document.getElementById('pipsContainer'); c.innerHTML='';
+  for(let i=1;i<=cfg.numRounds;i++){ const d=document.createElement('div'); d.className='round-pip'; d.id='pip'+i; c.appendChild(d); }
   updateIdleConfig();
 }
 
 function updateIdleConfig() {
   document.getElementById('idleConfig').innerHTML =
-    cfg.numRounds + ' rounds &nbsp;·&nbsp; ' + (cfg.roundDur/60) + ' min each &nbsp;·&nbsp; ' + (cfg.restDur/60) + ' min rest<br>' +
-    'Combo hold: ' + cfg.comboDur + ' sec &nbsp;·&nbsp; Turn volume up before starting';
+    cfg.numRounds+' rounds &nbsp;·&nbsp; '+(cfg.roundDur/60)+' min each &nbsp;·&nbsp; '+(cfg.restDur/60)+' min rest<br>'+
+    'Combo hold: '+cfg.comboDur+' sec &nbsp;·&nbsp; '+getAllCombos().length+' combos in rotation';
 }
 
 function updatePips() {
-  for (let i=1; i<=cfg.numRounds; i++) {
-    const pip = document.getElementById('pip'+i); if (!pip) continue;
-    pip.className = 'round-pip';
-    if (i < currentRound) pip.classList.add('done');
-    else if (i === currentRound && !isResting) pip.classList.add('active');
+  for(let i=1;i<=cfg.numRounds;i++){
+    const pip=document.getElementById('pip'+i); if(!pip) continue;
+    pip.className='round-pip';
+    if(i<currentRound) pip.classList.add('done');
+    else if(i===currentRound&&!isResting) pip.classList.add('active');
   }
 }
 
-function updateRing(tl, total) {
-  const offset = 974 * (1 - tl/total);
-  const ring = document.getElementById('ringFill');
-  ring.style.strokeDashoffset = offset;
-  ring.className = 'ring-fill' + (isResting ? ' rest-ring' : '');
+function updateRing(tl,total) {
+  const offset=974*(1-tl/total);
+  const ring=document.getElementById('ringFill');
+  ring.style.strokeDashoffset=offset;
+  ring.className='ring-fill'+(isResting?' rest-ring':'');
 }
 
 function updateTimerDisplay() {
-  const el = document.getElementById('timerDisplay');
-  el.textContent = formatTime(timeLeft);
-  el.className = 'timer-display';
-  if (timeLeft <= 10) el.classList.add('danger');
-  else if (timeLeft <= 20) el.classList.add('warning');
-  updateRing(timeLeft, isResting ? cfg.restDur : cfg.roundDur);
+  const el=document.getElementById('timerDisplay');
+  el.textContent=formatTime(timeLeft);
+  el.className='timer-display';
+  if(timeLeft<=10) el.classList.add('danger');
+  else if(timeLeft<=20) el.classList.add('warning');
+  updateRing(timeLeft,isResting?cfg.restDur:cfg.roundDur);
 }
 
 function setPhaseUI() {
-  const tag = document.getElementById('phaseTag');
-  const rt = document.getElementById('roundText');
-  if (isResting) {
+  const tag=document.getElementById('phaseTag'), rt=document.getElementById('roundText');
+  if(isResting){
     tag.textContent='REST'; tag.className='phase-tag rest';
-    rt.textContent = currentRound < cfg.numRounds ? 'ROUND '+(currentRound+1)+' NEXT' : 'LAST ROUND DONE';
+    rt.textContent=currentRound<cfg.numRounds?'ROUND '+(currentRound+1)+' NEXT':'LAST ROUND DONE';
     clearCombo();
   } else {
     tag.textContent='ROUND'; tag.className='phase-tag fight';
-    rt.textContent = 'ROUND '+currentRound+' OF '+cfg.numRounds;
+    rt.textContent='ROUND '+currentRound+' OF '+cfg.numRounds;
   }
   updatePips();
 }
@@ -362,68 +522,65 @@ function clearCombo() {
   document.getElementById('comboSeq').innerHTML='';
   document.getElementById('moveTip').textContent='';
   document.getElementById('comboCd').textContent='';
-  if (punchInterval) { clearInterval(punchInterval); punchInterval=null; }
-  if (cdInterval) { clearInterval(cdInterval); cdInterval=null; }
+  if(punchInterval){clearInterval(punchInterval);punchInterval=null;}
+  if(cdInterval){clearInterval(cdInterval);cdInterval=null;}
 }
 
-function highlightPunch(combo, idx) {
-  combo.punches.forEach((_,i) => { const b=document.getElementById('punch_'+i); if(b) b.classList.remove('active-punch'); });
-  const b = document.getElementById('punch_'+idx); if (b) b.classList.add('active-punch');
+function highlightPunch(combo,idx) {
+  combo.punches.forEach((_,i)=>{const b=document.getElementById('punch_'+i);if(b)b.classList.remove('active-punch');});
+  const b=document.getElementById('punch_'+idx); if(b) b.classList.add('active-punch');
 }
 
 function showCombo(combo) {
-  document.getElementById('comboName').textContent = combo.name.toUpperCase();
-  document.getElementById('moveTip').textContent = combo.tip;
-  const seq = document.getElementById('comboSeq');
-  seq.innerHTML = '';
-  combo.punches.forEach((p,i) => {
-    const badge = document.createElement('div');
-    badge.className = 'punch-badge '+p.type; badge.textContent = p.label; badge.id = 'punch_'+i;
+  document.getElementById('comboName').textContent=combo.name.toUpperCase();
+  document.getElementById('moveTip').textContent=combo.tip;
+  const seq=document.getElementById('comboSeq'); seq.innerHTML='';
+  combo.punches.forEach((p,i)=>{
+    const badge=document.createElement('div');
+    badge.className='punch-badge '+(p.type||'punch');
+    badge.textContent=p.label; badge.id='punch_'+i;
     seq.appendChild(badge);
   });
   speak(combo.voice);
-  if (punchInterval) clearInterval(punchInterval);
+  if(punchInterval) clearInterval(punchInterval);
   let idx=0; highlightPunch(combo,idx); idx++;
-  punchInterval = setInterval(() => {
-    if (idx < combo.punches.length) { highlightPunch(combo,idx); idx++; }
-    else {
-      clearInterval(punchInterval); punchInterval=null;
-      combo.punches.forEach((_,i) => { const b=document.getElementById('punch_'+i); if(b) b.classList.remove('active-punch'); });
-    }
-  }, 700);
-  if (cdInterval) clearInterval(cdInterval);
-  cdLeft = cfg.comboDur;
-  document.getElementById('comboCd').textContent = 'NEXT IN '+cdLeft+'s';
-  cdInterval = setInterval(() => {
-    if (isPaused) return;
+  punchInterval=setInterval(()=>{
+    if(idx<combo.punches.length){highlightPunch(combo,idx);idx++;}
+    else{clearInterval(punchInterval);punchInterval=null;combo.punches.forEach((_,i)=>{const b=document.getElementById('punch_'+i);if(b)b.classList.remove('active-punch');});}
+  },700);
+  if(cdInterval) clearInterval(cdInterval);
+  cdLeft=cfg.comboDur;
+  document.getElementById('comboCd').textContent='NEXT IN '+cdLeft+'s';
+  cdInterval=setInterval(()=>{
+    if(isPaused) return;
     cdLeft--;
-    if (cdLeft <= 0) { clearInterval(cdInterval); cdInterval=null; document.getElementById('comboCd').textContent=''; }
-    else document.getElementById('comboCd').textContent = 'NEXT IN '+cdLeft+'s';
-  }, 1000);
+    if(cdLeft<=0){clearInterval(cdInterval);cdInterval=null;document.getElementById('comboCd').textContent='';}
+    else document.getElementById('comboCd').textContent='NEXT IN '+cdLeft+'s';
+  },1000);
 }
 
 function callNextCombo() {
-  if (isResting || isPaused) return;
-  let idx; do { idx = Math.floor(Math.random()*COMBOS.length); } while (idx===lastComboIndex && COMBOS.length>1);
+  if(isResting||isPaused) return;
+  const all=getAllCombos();
+  let idx; do{idx=Math.floor(Math.random()*all.length);}while(idx===lastComboIndex&&all.length>1);
   lastComboIndex=idx; comboCount++;
-  showCombo(COMBOS[idx]);
+  showCombo(all[idx]);
 }
 
 function startComboTimer() {
-  if (comboInterval) clearInterval(comboInterval);
+  if(comboInterval) clearInterval(comboInterval);
   callNextCombo();
-  comboInterval = setInterval(() => { if (!isPaused && !isResting) callNextCombo(); }, cfg.comboDur*1000);
+  comboInterval=setInterval(()=>{if(!isPaused&&!isResting)callNextCombo();},cfg.comboDur*1000);
 }
-
-function stopComboTimer() { if (comboInterval) { clearInterval(comboInterval); comboInterval=null; } }
+function stopComboTimer(){if(comboInterval){clearInterval(comboInterval);comboInterval=null;}}
 
 function tick() {
   timeLeft--;
   updateTimerDisplay();
-  if (timeLeft <= 0) {
-    if (!isResting) {
+  if(timeLeft<=0){
+    if(!isResting){
       stopComboTimer(); clearCombo();
-      if (currentRound >= cfg.numRounds) { endSession(); return; }
+      if(currentRound>=cfg.numRounds){endSession();return;}
       isResting=true; timeLeft=cfg.restDur; setPhaseUI();
       speak("Round "+currentRound+" complete. Rest up.");
     } else {
@@ -440,14 +597,14 @@ function startSession() {
   buildPips(); isPaused=false; currentRound=1; isResting=false; timeLeft=cfg.roundDur; comboCount=0; lastComboIndex=-1;
   setPhaseUI(); updateTimerDisplay(); updateBtns();
   speak("Round 1! Let's go!");
-  timerInterval = setInterval(tick, 1000);
+  timerInterval=setInterval(tick,1000);
   startComboTimer();
 }
 
 function togglePause() {
-  if (isPaused) {
+  if(isPaused){
     isPaused=false; timerInterval=setInterval(tick,1000);
-    if (!isResting) startComboTimer();
+    if(!isResting) startComboTimer();
     speak("Go!");
   } else {
     isPaused=true; clearInterval(timerInterval); stopComboTimer(); synth.cancel();
@@ -456,17 +613,17 @@ function togglePause() {
 }
 
 function updateBtns() {
-  document.getElementById('mainBtn').style.display = isPaused ? 'block' : 'none';
-  document.getElementById('pauseBtn').style.display = isPaused ? 'none' : 'block';
+  document.getElementById('mainBtn').style.display=isPaused?'block':'none';
+  document.getElementById('pauseBtn').style.display=isPaused?'none':'block';
 }
 
 function endSession() {
   clearInterval(timerInterval); stopComboTimer(); clearCombo(); isPaused=true; synth.cancel();
   speak("Session complete. You're fight ready.");
-  document.getElementById('statCombos').textContent = comboCount;
-  document.getElementById('statRounds').textContent = cfg.numRounds;
-  document.getElementById('statTime').textContent = formatTime(cfg.roundDur * cfg.numRounds);
-  setTimeout(() => document.getElementById('completeScreen').classList.remove('hidden'), 1200);
+  document.getElementById('statCombos').textContent=comboCount;
+  document.getElementById('statRounds').textContent=cfg.numRounds;
+  document.getElementById('statTime').textContent=formatTime(cfg.roundDur*cfg.numRounds);
+  setTimeout(()=>document.getElementById('completeScreen').classList.remove('hidden'),1200);
 }
 
 function resetSession() {
@@ -479,6 +636,5 @@ function resetSession() {
 
 buildPips(); updateTimerDisplay(); updateBtns();
 </script>
-
 </body>
 </html>
